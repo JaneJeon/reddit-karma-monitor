@@ -3,7 +3,7 @@ service: karma-monitor
 provider:
   name: aws
   runtime: nodejs8.10
-  memorySize: 256
+  memorySize: 128
   iamRoleStatements:
     - Effect: Allow
       Resource: "*"
