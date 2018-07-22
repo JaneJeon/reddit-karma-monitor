@@ -9,21 +9,7 @@ const snoowrap = require("snoowrap"),
     password: process.env.PASSWORD
   }),
   SES = require("aws-sdk/clients/ses"),
-  mailer = new SES()
-
-mailer.sendEmail(
-  {
-    Source: process.env.EMAIL_FROM,
-    Destination: { ToAddresses: [process.env.EMAIL_TO] },
-    Message: {
-      Subject: { Data: "Reddit Karma Monitor Initiated" },
-      Body: { Text: { Data: "" } }
-    }
-  },
-  err => {
-    if (err) console.error(err)
-  }
-)
+  ses = new SES()
 
 exports.run = async () => {
   for (const comment of await r.getMe().getComments())
@@ -34,7 +20,7 @@ exports.run = async () => {
       console.log(body)
 
       await Promise.all([
-        mailer
+        ses
           .sendEmail({
             Source: process.env.EMAIL_FROM,
             Destination: { ToAddresses: [process.env.EMAIL_TO] },
