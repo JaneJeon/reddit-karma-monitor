@@ -1,0 +1,12 @@
+service: karma-monitor
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  memorySize: 128
+
+functions:
+  check:
+    handler: handler.run
+    events:
+      - schedule: rate(5 minutes)

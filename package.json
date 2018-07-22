@@ -1,0 +1,13 @@
+{
+  "name": "reddit-karma-monitor",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "repository": "https://github.com/JaneJeon/reddit-karma-monitor.git",
+  "author": "Jane Jeon",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.279.1",
+    "dotenv": "^6.0.0",
+    "snoowrap": "^1.15.2"
+  }
+}
