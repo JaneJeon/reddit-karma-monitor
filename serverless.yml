@@ -5,7 +5,7 @@ provider:
   runtime: nodejs8.10
   memorySize: 128
   stage: prod
-  timeout: 1
+  timeout: 3 # Reddit APIs can take a long time to respond
   iamRoleStatements:
     - Effect: Allow
       Resource: "*"
@@ -16,4 +16,5 @@ functions:
   check:
     handler: handler.run
     events:
-      - schedule: rate(5 minutes)
+      - schedule: rate(10 minutes)
+    reservedConcurrency: 1
