@@ -18,3 +18,28 @@ functions:
     events:
       - schedule: rate(10 minutes)
     reservedConcurrency: 1
+
+resources:
+  Resources:
+    MemoryUsedMetricFilter:
+      Type: AWS::Logs::MetricFilter
+      Properties:
+        LogGroupName: "/aws/lambda/${self:service}-${self:provider.stage}-check"
+        FilterPattern: '[report_prefix="REPORT", ..., max_memory_used_prefix="Used:", max_memory_used,max_memory_used_unit="MB"]'
+        MetricTransformations:
+        - MetricValue: "$max_memory_used"
+          MetricNamespace: Lambda
+          MetricName: Memory
+    TimeoutAlarm:
+      Type: AWS::CloudWatch::Alarm
+      Properties:
+        MetricName: Errors
+        Namespace: AWS/Lambda
+        Statistic: Average
+        Period: 600
+        EvaluationPeriods: 6
+        Threshold: 3
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        # TODO: if you're not as lazy as me, then you can configure an actual alarm action:
+        # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-cloudwatchlogs.html?shortFooter=true
+        # e.g. "send email to foo@bar.com when the alarm is triggered"
