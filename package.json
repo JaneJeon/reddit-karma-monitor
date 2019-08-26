@@ -6,7 +6,7 @@
   "author": "Jane Jeon",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^6.0.0",
+    "dotenv": "^8.1.0",
     "snoowrap": "^1.19.0"
   },
   "devDependencies": {
