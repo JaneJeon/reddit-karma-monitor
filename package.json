@@ -7,12 +7,12 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^8.1.0",
-    "snoowrap": "^1.15.2"
+    "snoowrap": "^1.19.0"
   },
   "devDependencies": {
     "aws-sdk": "^2.279.1",
     "serverless": "^1.50.0",
-    "serverless-plugin-optimize": "^3.1.1-rc.1",
+    "serverless-plugin-optimize": "^4.0.0-rc.1",
     "serverless-prune-plugin": "^1.4.0"
   }
 }
