@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.279.1",
-    "serverless": "^1.50.0",
+    "serverless": "^1.51.0",
     "serverless-plugin-optimize": "^4.0.0-rc.1",
     "serverless-prune-plugin": "^1.4.0"
   }
